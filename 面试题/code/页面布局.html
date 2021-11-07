@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面布局</title>
+    <style>
+        html *{
+            padding: 0;
+            margin: 0;
+        }
+        /* .layout article div{
+            height: 100px;
+        } */
+        .layout{
+            margin-top: 20px;
+        }
+        /* 1.浮动 */
+        /* .layout.float表示交集选择器，空格表示后代选择器 */
+        .layout.float .left{
+            float: left;
+            width: 300px;
+            background: red;
+        }
+        .layout.float .right{
+            float: right;
+            width: 300px;
+            background: blue;
+        }
+        .layout.float .center{
+            background: green;
+            /* overflow: hidden; */
+        }
+        /* 2.绝对定位 */
+        .layout.absolute{
+            margin-top: 100px;
+        }
+        .layout.absolute .left{
+            position: absolute;
+            left: 0;
+            width: 300px;
+            background: red;
+        }
+        /* 【重要】中间的区域，左侧定位300px，右侧定位为300px，即可完成。宽度会自使用 */
+        .layout.absolute .center{
+            position: absolute;
+            left: 300px;
+            right: 300px;
+            background: green;
+        }
+        .layout.absolute .right{
+            position: absolute;
+            right: 0;
+            width: 300px;
+            background: blue;
+        }
+        /* 3.flex */
+        /* 绝对布局导致脱离文档流，因此上边距300px是从方法一中还在文档流的元素开始算 */
+        .layout.flex{
+            margin-top: 230px;
+        }
+        .layout.flex .left-center-right{
+            display: flex;
+        }
+        .layout.flex .left {
+            width: 300px;
+            background: red;
+        }
+
+        .layout.flex .center {
+            flex: 1;
+            background: green;
+        }
+
+        .layout.flex .right {
+            width: 300px;
+            background: blue;
+        }
+        /* 4.表格 */
+        /* 重要：设置容器为表格布局，宽度为100% */
+        .layout.table .left-center-right{
+            width: 100%;
+            display: table;
+        }
+        /* 重要：设置三个模块为表格里的单元*/
+        .layout.table .left-center-right div{
+            display: table-cell;
+        }
+        .layout.table .left{
+            width: 300px;
+            background: red;
+        }
+        .layout.table .center {
+            background: green;
+        }
+
+        .layout.table .right {
+            width: 300px;
+            background: blue;
+        }
+        /* 5.网格 */
+        /* 重要：设置容器为网格布局，宽度为100% */
+        /* 设置网格为三列，并设置每列的宽度。即可。 */
+        .layout.grid .left-center-right{
+            display: grid;
+            width: 100%;
+            /* grid-template-rows: 100px; */
+            grid-template-columns: 300px auto 300px;
+        }
+        .layout.grid .left {
+            background: red;
+        }
+        .layout.grid .center {
+            background: green;
+        }
+        .layout.grid .right {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 方法一：浮动 -->
+    <!-- 
+        元素设置浮动以后，会完全从文档流中脱离，不再占用文档流的位置，
+         所以元素下边的还在文档流中的元素会自动向上移动 
+    -->
+    <!-- 输入 section.layout.float，即可生成 -->
+    <section class="layout float">
+        <!-- 用article标签包裹左、中、右三个部分 -->
+        <article class="left-center-right">
+            <div class="left">
+                left
+            </div>
+            <div class="right">
+                right
+            </div>
+            <div class="center">
+                <h1>浮动</h1>
+                center
+            </div>
+        </article>
+    <!-- 方法二：绝对定位 -->
+    </section>
+    <section class="layout absolute">
+        <article class="left-center-right">
+            <div class="left">
+                left
+            </div>
+            <div class="center">
+                <h1>绝对定位</h1>
+                center
+            </div>
+            <div class="right">
+                right
+            </div>
+        </article>
+    </section>
+    <!-- 方法三：flex -->
+    <section class="layout flex">
+        <article class="left-center-right">
+            <div class="left">
+                我是 left
+            </div>
+            <div class="center">
+                <h1>flex布局</h1>
+                我是 center
+            </div>
+            <div class="right">
+                我是 right
+            </div>
+        </article>
+    </section>
+    <!-- 方法四、表格 -->
+    <section class="layout table">
+        <article class="left-center-right">
+            <div class="left">
+                left
+            </div>
+            <div class="center">
+                <h1>表格布局</h1>
+                center
+            </div>
+            <div class="right">
+                right
+            </div>
+        </article>
+    </section>
+    <!-- 方法五、网格 -->
+    <section class="layout grid">
+        <article class="left-center-right">
+            <div class="left">
+                left
+            </div>
+            <div class="center">
+                <h1>网格布局</h1>
+                center
+            </div>
+            <div class="right">
+                right
+            </div>
+
+        </article>
+    </section>
+</body>
+</html>

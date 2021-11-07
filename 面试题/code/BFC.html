@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC</title>
+    <style>
+        .father {
+            background: pink;
+            overflow: hidden;
+        }
+
+        .son {
+            float: left;
+            background: green;
+        }
+
+        .father-layout {
+            background: pink;
+        }
+
+        .father-layout .left {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .father-layout .right {
+            height: 150px;
+            /*右侧标准流里的元素，比左侧浮动的元素要高*/
+            background: red;
+            overflow: hidden
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <section class="father">
+        <div class="son">
+            hello son
+        </div>
+    </section>
+    <section class="father-layout">
+        <div class="left">
+            左侧，1234
+        </div>
+        <div class="right">
+            右侧，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，
+        </div>
+    </section>
+    
+   
+</body>
+
+</html>
